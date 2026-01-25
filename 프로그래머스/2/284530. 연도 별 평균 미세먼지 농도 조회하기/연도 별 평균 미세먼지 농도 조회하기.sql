@@ -1,0 +1,16 @@
+-- LOCATION1 : 지역구분1
+-- LOCATION2 : 지역구분2
+-- YM : 측정일
+-- PM_VAL1 : 미세먼지 오염도
+-- PM_VAL2 : 초미세먼지 오염도
+
+-- 코드를 작성해주세요
+SELECT 
+    -- DATE_FORMAT(YM, '%Y') YEAR, 
+    YEAR(YM) AS YEAR,
+    ROUND(AVG(PM_VAL1), 2) PM10, 
+    ROUND(AVG(PM_VAL2), 2) "PM2.5"
+FROM AIR_POLLUTION 
+WHERE LOCATION2 = '수원'
+GROUP BY YEAR
+ORDER BY YEAR ASC
