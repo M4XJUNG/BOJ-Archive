@@ -1,0 +1,22 @@
+-- 코드를 입력하세요
+SELECT
+    CATEGORY,
+    PRICE AS MAX_PRICE,
+    PRODUCT_NAME
+FROM
+    FOOD_PRODUCT
+WHERE
+    (CATEGORY, PRICE) IN (
+        -- 각 식품분류별로 가장 비싼 가격을 찾는 서브쿼리
+        SELECT
+            CATEGORY,
+            MAX(PRICE)
+        FROM
+            FOOD_PRODUCT
+        WHERE
+            CATEGORY IN ('과자', '국', '김치', '식용유')
+        GROUP BY
+            CATEGORY
+    )
+ORDER BY
+    MAX_PRICE DESC;
