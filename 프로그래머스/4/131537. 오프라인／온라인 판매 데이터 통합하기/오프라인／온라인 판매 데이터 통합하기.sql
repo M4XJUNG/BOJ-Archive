@@ -1,0 +1,30 @@
+-- 코드를 입력하세요
+-- 1. 2022년 3월의 온라인 판매 데이터 조회
+SELECT
+    DATE_FORMAT(SALES_DATE, '%Y-%m-%d') AS SALES_DATE,
+    PRODUCT_ID,
+    USER_ID,
+    SALES_AMOUNT
+FROM
+    ONLINE_SALE
+WHERE
+    SALES_DATE LIKE '2022-03%'
+
+UNION ALL
+
+-- 2. 2022년 3월의 오프라인 판매 데이터 조회 (USER_ID는 NULL로 처리)
+SELECT
+    DATE_FORMAT(SALES_DATE, '%Y-%m-%d') AS SALES_DATE,
+    PRODUCT_ID,
+    NULL AS USER_ID,
+    SALES_AMOUNT
+FROM
+    OFFLINE_SALE
+WHERE
+    SALES_DATE LIKE '2022-03%'
+
+-- 3. 결과 정렬
+ORDER BY
+    SALES_DATE ASC,
+    PRODUCT_ID ASC,
+    USER_ID ASC;
