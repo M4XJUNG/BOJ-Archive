@@ -1,0 +1,5 @@
+# 31610 飴の袋詰め (Drops Packing) - 11월 1일(토)
+a = int(input())
+b = int(input())
+c = int(input())
+print(a * b + c)
